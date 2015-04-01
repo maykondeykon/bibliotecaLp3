@@ -50,10 +50,15 @@ public class GuiPrincipal extends AbstractGui
         JMenuItem cadDepartamento = new JMenuItem("Departamento");
         cadDepartamento.setActionCommand("novoDepartamento");
         cadDepartamento.addActionListener(this);
+        
+        JMenuItem cadEditora = new JMenuItem("Editora");
+        cadEditora.setActionCommand("novaEditora");
+        cadEditora.addActionListener(this);
 
         menuCadastro.add(cadAutor);
         menuCadastro.add(cadAssunto);
         menuCadastro.add(cadDepartamento);
+        menuCadastro.add(cadEditora);
 
         return barra;
     }
@@ -70,6 +75,9 @@ public class GuiPrincipal extends AbstractGui
                 break;
             case "novoDepartamento":
                 guiCadDepartamento();
+                break;
+            case "novaEditora":
+                guiCadEditora();
                 break;
         }
     }
@@ -90,6 +98,12 @@ public class GuiPrincipal extends AbstractGui
     {
         GuiDepartamento guiDepartamento = new GuiDepartamento();
         exibeGui(guiDepartamento);
+    }
+    
+    private void guiCadEditora()
+    {
+        GuiEditora guiEditora = new GuiEditora();
+        exibeGui(guiEditora);
     }
 
     public static void main(String[] args)
