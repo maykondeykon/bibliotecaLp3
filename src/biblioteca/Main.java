@@ -18,9 +18,16 @@ public class Main
         
         EntityManager em = emf.createEntityManager();
         
-        Autor autor = em.find(Autor.class, 1);
+        Autor autor = new Autor();
+        autor.setNome("João");
         
-        System.out.println("nome: "+ autor.getNome());
+        em.getTransaction().begin();
+        em.persist(autor);
+        em.getTransaction().commit();
+        
+        Autor autor2 = em.find(Autor.class, 1);
+        
+        System.out.println("nome: "+ autor2.getNome());
         
         em.close();
         emf.close();
