@@ -15,9 +15,9 @@
     <class>biblioteca.models.ObraTipo</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bibliotecaLp3?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.password" value="biblio"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.user" value="bibliotecaUser"/>
       <!--<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>-->
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
