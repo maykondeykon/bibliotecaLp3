@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/maykon/MEGAsync/IFMA/LP3/projetos/biblioteca/src/biblioteca/Main.java</file>
-            <file>file:/home/maykon/MEGAsync/IFMA/LP3/projetos/biblioteca/src/META-INF/persistence.xml</file>
-            <file>file:/home/maykon/MEGAsync/IFMA/LP3/projetos/biblioteca/src/biblioteca/models/Obra.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiPrincipal.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/teste/FormularioFilho.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/controllers/Main.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/teste/FormularioMdi.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/utils/JPAUtil.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/models/Autor.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiAutor.java</file>
         </group>
     </open-files>
 </project-private>
