@@ -1,5 +1,7 @@
 package biblioteca.views;
 
+import biblioteca.controllers.AbstractController;
+import biblioteca.controllers.CadastroController;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -63,6 +65,11 @@ public class GuiPrincipal extends JFrame implements ActionListener
         GuiAutor guiAutor = new GuiAutor();
         guiAutor.setVisible(true);
         painel.add(guiAutor);
+    }
+    
+    public static void main(String[] args)
+    {
+        new GuiPrincipal();
     }
 
 }
