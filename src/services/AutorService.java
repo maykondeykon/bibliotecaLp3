@@ -9,9 +9,9 @@ import javax.swing.JTextField;
  *
  * @author maykon
  */
-public class AutorService extends AbstractService
+public class AutorService extends AbstractService<Autor>
 {
-    public Autor hidrate(Map<String, String> dados)
+    public Autor hydrate(Map<String, String> dados)
     {
         Autor autor = new Autor();
         autor.setNome(dados.get("nome"));
@@ -19,13 +19,10 @@ public class AutorService extends AbstractService
         return autor;
     }
 
-    public Autor insert(Autor autor)
+    @Override
+    public void insert(Autor autor)
     {
-        em.getTransaction().begin();
-        em.persist(autor);
-        em.getTransaction().commit();
-        em.close();
-
-        return autor;
+        super.insert(autor);
     }
+
 }

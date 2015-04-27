@@ -1,21 +1,15 @@
 package biblioteca.views;
 
-import biblioteca.controllers.AbstractController;
 import biblioteca.controllers.CadastroController;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -23,30 +17,30 @@ import javax.swing.JTextField;
  *
  * @author maykon
  */
-public class GuiAutor extends JInternalFrame
+public class GuiDepartamento extends JInternalFrame
 {
 
-    private final JTextField nome;
-    private final JLabel nomeLabel;
+    private final JTextField departamento;
+    private final JLabel departamentoLabel;
     private final JButton salvar;
 
-    public GuiAutor() throws HeadlessException
+    public GuiDepartamento()
     {
-        super("Cadastrar autor", true, true, false, true);
+        super("Cadastrar departamento", true, true, false, true);
 
         final JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.PAGE_AXIS));
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        nome = new JTextField(25);
-        nome.setName("nome");
-        nomeLabel = new JLabel("Nome");
+        departamento = new JTextField(25);
+        departamento.setName("departamento");
+        departamentoLabel = new JLabel("Departamento");
         salvar = new JButton("Salvar");
 
-        nome.setPreferredSize(new Dimension(300, 20));
+        departamento.setPreferredSize(new Dimension(300, 20));
 
-        painel.add(nomeLabel);
-        painel.add(nome);
+        painel.add(departamentoLabel);
+        painel.add(departamento);
         painel.add(Box.createVerticalStrut(20));
         painel.add(salvar);
 
@@ -57,19 +51,13 @@ public class GuiAutor extends JInternalFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                controller.insertAutor(controller.getHashMap(painel));
-                nome.setText(null);
+                controller.insertDepartamento(controller.getHashMap(painel));
+                departamento.setText(null);
             }
         });
 
         setContentPane(painel);
         pack();
-    }
-
-    private void msg(String msg)
-    {
-        JOptionPane.showMessageDialog(
-                null, msg, "Aviso", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }
