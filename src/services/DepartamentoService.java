@@ -1,6 +1,7 @@
 package services;
 
 import biblioteca.models.Departamento;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,6 +10,7 @@ import java.util.Map;
  */
 public class DepartamentoService extends AbstractService<Departamento>
 {
+
     public Departamento hydrate(Map<String, String> dados)
     {
         Departamento departamento = new Departamento();
@@ -21,6 +23,11 @@ public class DepartamentoService extends AbstractService<Departamento>
     public void insert(Departamento departamento)
     {
         super.insert(departamento);
+    }
+
+    public List<Departamento> findAll()
+    {
+        return super.findAll();
     }
 
 }

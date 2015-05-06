@@ -84,7 +84,7 @@ public class GuiPrincipal extends AbstractGui
             case "novaEditora":
                 guiCadEditora();
                 break;
-            case "novaFuncionario":
+            case "novoFuncionario":
                 guiCadFuncionario();
                 break;
         }

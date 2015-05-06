@@ -29,6 +29,7 @@ import javax.persistence.Table;
 public class Autor implements Serializable 
 {
     private static final long serialVersionUID = 1L;
+    public static final String FIND_ALL = "Autor.findAll";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

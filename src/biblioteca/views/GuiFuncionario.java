@@ -1,9 +1,11 @@
 package biblioteca.views;
 
 import biblioteca.controllers.CadastroController;
+import biblioteca.models.Departamento;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -13,6 +15,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import services.DepartamentoService;
 
 /**
  *
@@ -48,6 +51,10 @@ public class GuiFuncionario extends JInternalFrame
         departamento = new JComboBox();
         departamento.setName("departamento");
         depLabel = new JLabel("Departamento");
+        
+        List<Departamento> deptos = null;
+        DepartamentoService depServ = new DepartamentoService();
+        
         
         salvar = new JButton("Salvar");
 
