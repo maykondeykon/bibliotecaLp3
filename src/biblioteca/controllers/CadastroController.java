@@ -5,6 +5,7 @@ import biblioteca.models.Autor;
 import biblioteca.models.Departamento;
 import biblioteca.models.Editora;
 import biblioteca.models.Funcionario;
+import biblioteca.models.Usuario;
 import biblioteca.views.GuiAutor;
 import biblioteca.views.GuiPrincipal;
 import java.awt.Component;
@@ -22,6 +23,7 @@ import services.AutorService;
 import services.DepartamentoService;
 import services.EditoraService;
 import services.FuncionarioService;
+import services.UsuarioService;
 import utils.JPAUtil;
 
 /**
@@ -98,6 +100,15 @@ public class CadastroController extends AbstractController
             FuncionarioService service = new FuncionarioService();
             Funcionario funcionario = service.hydrate(dados);
             service.insert(funcionario);
+        }
+    }
+
+    public void insertUsuario(Map<String, String> dados)
+    {
+        if (isValid(dados)) {
+            UsuarioService service = new UsuarioService();
+            Usuario usuario = service.hydrate(dados);
+            service.insert(usuario);
         }
     }
 
