@@ -46,14 +46,16 @@ public class GuiFuncionario extends JInternalFrame
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         nome = new JTextField(25);
-        nome.setName("editora");
-        nomeLabel = new JLabel("Editora");
+        nome.setName("nome");
+        nomeLabel = new JLabel("Nome");
 
         matricula = new JTextField(25);
         matricula.setName("matricula");
         matriculaLabel = new JLabel("Matrícula");
         
         departamentoId = new JTextField(25);
+        departamentoId.setName("departamentoId");
+        departamentoId.setVisible(false);
 
         departamento = new JComboBox();
         departamento.setName("departamento");
@@ -87,7 +89,7 @@ public class GuiFuncionario extends JInternalFrame
         departamento.addItemListener(new ItemListener(){
             @Override
             public void itemStateChanged(ItemEvent e){
-                departamentoId.setText(deptos.toString());
+                departamentoId.setText(departamento.getSelectedIndex()+"");
             }
         });
 
@@ -102,6 +104,7 @@ public class GuiFuncionario extends JInternalFrame
                 nome.setText(null);
                 matricula.setText(null);
                 departamento.setSelectedIndex(0);
+                departamentoId.setText(null);
             }
         });
 

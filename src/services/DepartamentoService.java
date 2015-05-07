@@ -31,4 +31,9 @@ public class DepartamentoService extends AbstractService<Departamento>
         return super.findAll(dept);
     }
 
+    public Departamento find(Integer id)
+    {
+        return em.find(Departamento.class, id);
+    }
+
 }

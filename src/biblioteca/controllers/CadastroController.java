@@ -4,6 +4,7 @@ import biblioteca.models.Assunto;
 import biblioteca.models.Autor;
 import biblioteca.models.Departamento;
 import biblioteca.models.Editora;
+import biblioteca.models.Funcionario;
 import biblioteca.views.GuiAutor;
 import biblioteca.views.GuiPrincipal;
 import java.awt.Component;
@@ -20,6 +21,7 @@ import services.AssuntoService;
 import services.AutorService;
 import services.DepartamentoService;
 import services.EditoraService;
+import services.FuncionarioService;
 import utils.JPAUtil;
 
 /**
@@ -93,13 +95,10 @@ public class CadastroController extends AbstractController
     public void insertFuncionario(Map<String, String> dados)
     {
         if (isValid(dados)) {
-            Set<String> chaves = dados.keySet();
-            for (String chave : chaves) {
-                System.out.println(dados.get("departamento"));
-            }
-
+            FuncionarioService service = new FuncionarioService();
+            Funcionario funcionario = service.hydrate(dados);
+            service.insert(funcionario);
         }
-
     }
 
 }
