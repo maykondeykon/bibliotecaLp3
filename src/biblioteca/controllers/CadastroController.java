@@ -56,7 +56,7 @@ public class CadastroController extends AbstractController
 //            System.out.println(dados.get("nome"));
 //        }
 
-        if(isValid(dados)){
+        if (isValid(dados)) {
             AutorService service = new AutorService();
             Autor autor = service.hydrate(dados);
             service.insert(autor);
@@ -71,7 +71,7 @@ public class CadastroController extends AbstractController
             service.insert(assunto);
         }
     }
-    
+
     public void insertDepartamento(Map<String, String> dados)
     {
         if (isValid(dados)) {
@@ -88,6 +88,18 @@ public class CadastroController extends AbstractController
             Editora editora = service.hydrate(dados);
             service.insert(editora);
         }
+    }
+
+    public void insertFuncionario(Map<String, String> dados)
+    {
+        if (isValid(dados)) {
+            Set<String> chaves = dados.keySet();
+            for (String chave : chaves) {
+                System.out.println(dados.get("departamento"));
+            }
+
+        }
+
     }
 
 }

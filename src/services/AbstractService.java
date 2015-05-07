@@ -10,10 +10,10 @@ import utils.JPAUtil;
 /**
  *
  * @author maykon
+ * @param <T>
  */
-public abstract class AbstractService<T extends Serializable>
+public abstract class AbstractService<T>
 {
-    private Class<T> clazz;
 
     EntityManager em = JPAUtil.getEntityManager();
 
@@ -26,8 +26,8 @@ public abstract class AbstractService<T extends Serializable>
 
     }
 
-    protected List<T> findAll()
+    protected List<T> findAll(T object)
     {
-        return em.createQuery("FROM " + clazz.getName()).getResultList();
+        return em.createQuery("SELECT a FROM " + object.getClass().getName() +" a").getResultList();
     }
 }

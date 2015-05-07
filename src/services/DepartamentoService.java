@@ -27,7 +27,8 @@ public class DepartamentoService extends AbstractService<Departamento>
 
     public List<Departamento> findAll()
     {
-        return super.findAll();
+        Departamento dept = new Departamento();
+        return super.findAll(dept);
     }
 
 }
