@@ -1,6 +1,7 @@
 package services;
 
 import biblioteca.models.ObraTipo;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,6 +22,17 @@ public class ObraTipoService extends AbstractService<ObraTipo>
     public void insert(ObraTipo obraTipo)
     {
         super.insert(obraTipo);
+    }
+
+    public List<ObraTipo> findAll()
+    {
+        ObraTipo obraTipo = new ObraTipo();
+        return super.findAll(obraTipo);
+    }
+
+    public ObraTipo find(Integer id)
+    {
+        return em.find(ObraTipo.class, id);
     }
 
 }

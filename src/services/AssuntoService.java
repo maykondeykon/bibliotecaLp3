@@ -1,6 +1,7 @@
 package services;
 
 import biblioteca.models.Assunto;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,6 +23,17 @@ public class AssuntoService extends AbstractService<Assunto>
     public void insert(Assunto assunto)
     {
         super.insert(assunto);
+    }
+
+    public List<Assunto> findAll()
+    {
+        Assunto assunto = new Assunto();
+        return super.findAll(assunto);
+    }
+
+    public Assunto find(Integer id)
+    {
+        return em.find(Assunto.class, id);
     }
 
 }

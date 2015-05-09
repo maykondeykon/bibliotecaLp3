@@ -1,6 +1,7 @@
 package services;
 
 import biblioteca.models.Autor;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,6 +22,17 @@ public class AutorService extends AbstractService<Autor>
     public void insert(Autor autor)
     {
         super.insert(autor);
+    }
+
+    public List<Autor> findAll()
+    {
+        Autor autor = new Autor();
+        return super.findAll(autor);
+    }
+
+    public Autor find(Integer id)
+    {
+        return em.find(Autor.class, id);
     }
 
 }

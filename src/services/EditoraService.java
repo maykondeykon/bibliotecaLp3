@@ -1,6 +1,7 @@
 package services;
 
 import biblioteca.models.Editora;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,6 +23,17 @@ public class EditoraService extends AbstractService<Editora>
     public void insert(Editora editora)
     {
         super.insert(editora);
+    }
+
+    public List<Editora> findAll()
+    {
+        Editora editora = new Editora();
+        return super.findAll(editora);
+    }
+
+    public Editora find(Integer id)
+    {
+        return em.find(Editora.class, id);
     }
 
 }

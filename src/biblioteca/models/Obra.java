@@ -45,7 +45,7 @@ public class Obra implements Serializable
     private String ano;
     @ManyToMany(mappedBy = "obraList")
     private List<Assunto> assuntoList;
-    @ManyToMany(mappedBy = "obraList")
+    @ManyToMany(mappedBy = "obraList", cascade = CascadeType.PERSIST)
     private List<Autor> autorList;
     @JoinColumn(name = "tipo", referencedColumnName = "id")
     @ManyToOne(optional = false)

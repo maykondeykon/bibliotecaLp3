@@ -5,14 +5,18 @@ import biblioteca.models.Autor;
 import biblioteca.models.Departamento;
 import biblioteca.models.Editora;
 import biblioteca.models.Funcionario;
+import biblioteca.models.Obra;
 import biblioteca.models.ObraTipo;
 import biblioteca.models.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import services.AssuntoService;
 import services.AutorService;
 import services.DepartamentoService;
 import services.EditoraService;
 import services.FuncionarioService;
+import services.ObraService;
 import services.ObraTipoService;
 import services.UsuarioService;
 
@@ -82,6 +86,24 @@ public class CadastroController extends AbstractController
             ObraTipoService service = new ObraTipoService();
             ObraTipo obraTipo = service.hydrate(dados);
             service.insert(obraTipo);
+        }
+    }
+
+    public void insertObra(Map<String, String> dados)
+    {
+        if (isValid(dados)) {
+            ObraService service = new ObraService();
+            Obra obra = service.hydrate(dados);
+
+            AutorService autorServ = new AutorService();
+            Integer autorId = Integer.parseInt(dados.get("autorId"));
+            Autor autor = autorServ.find(autorId);
+            
+            AssuntoService assuntoServ = new AssuntoService();
+            Integer assuntoId = Integer.parseInt(dados.get("assuntoId"));
+            Assunto assunto = assuntoServ.find(assuntoId);
+
+            service.insert(obra, autor, assunto);
         }
     }
 
