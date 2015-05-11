@@ -29,8 +29,8 @@ public class GuiExemplar extends JInternalFrame
     private final JComboBox obra;
     private final JTextField obraId;
     private final JLabel obraLabel;
-    private final JTextField dtaAquisicao;
-    private final JLabel dtaLabel;
+//    private final JTextField dtaAquisicao;
+//    private final JLabel dtaLabel;
     private final JTextField qtd;
     private final JLabel qtdLabel;
     private final JButton salvar;
@@ -38,15 +38,15 @@ public class GuiExemplar extends JInternalFrame
 
     public GuiExemplar()
     {
-        super("Cadastrar editora", true, true, false, true);
+        super("Cadastrar exemplares", true, true, false, true);
 
         final JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.PAGE_AXIS));
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        dtaAquisicao = new JTextField(25);
-        dtaAquisicao.setName("dtaAquisicao");
-        dtaLabel = new JLabel("Editora");
+//        dtaAquisicao = new JTextField(25);
+//        dtaAquisicao.setName("dtaAquisicao");
+//        dtaLabel = new JLabel("Data de aquisição");
         
         qtd = new JTextField(25);
         qtd.setName("qtd");
@@ -79,9 +79,9 @@ public class GuiExemplar extends JInternalFrame
         painel.add(qtdLabel);
         painel.add(qtd);
         painel.add(Box.createVerticalStrut(20));
-        painel.add(dtaLabel);
-        painel.add(dtaAquisicao);
-        painel.add(Box.createVerticalStrut(20));
+//        painel.add(dtaLabel);
+//        painel.add(dtaAquisicao);
+//        painel.add(Box.createVerticalStrut(20));
         painel.add(salvar);
         
         obra.addItemListener(new ItemListener()
@@ -102,7 +102,7 @@ public class GuiExemplar extends JInternalFrame
             {
                 controller.insertExemplar(controller.getHashMap(painel));
                 qtd.setText(null);
-                dtaAquisicao.setText(null);
+//                dtaAquisicao.setText(null);
                 obra.setSelectedIndex(0);
                 obraId.setText(null);
             }

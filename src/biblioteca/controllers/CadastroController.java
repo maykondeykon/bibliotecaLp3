@@ -28,6 +28,7 @@ import services.UsuarioService;
  */
 public class CadastroController extends AbstractController
 {
+
     public void insertAutor(Map<String, String> dados)
     {
         if (isValid(dados)) {
@@ -100,7 +101,7 @@ public class CadastroController extends AbstractController
             AutorService autorServ = new AutorService();
             Integer autorId = Integer.parseInt(dados.get("autorId"));
             Autor autor = autorServ.find(autorId);
-            
+
             AssuntoService assuntoServ = new AssuntoService();
             Integer assuntoId = Integer.parseInt(dados.get("assuntoId"));
             Assunto assunto = assuntoServ.find(assuntoId);
@@ -112,9 +113,14 @@ public class CadastroController extends AbstractController
     public void insertExemplar(Map<String, String> dados)
     {
         if (isValid(dados)) {
-            ExemplarService service = new ExemplarService();
-            Exemplar exemplar = service.hydrate(dados);
-//            service.insert(exemplar);
+            Integer qtd = Integer.parseInt(dados.get("qtd"));
+
+            for (int i = 0; i < qtd; i++) {
+                ExemplarService service = new ExemplarService();
+                Exemplar exemplar = service.hydrate(dados);
+                service.insert(exemplar);
+            }
+
         }
     }
 

@@ -15,43 +15,22 @@ import javax.persistence.Query;
  */
 public class ExemplarService extends AbstractService<Exemplar>
 {
+
     public Exemplar hydrate(Map<String, String> dados)
     {
         Exemplar exemplar = new Exemplar();
         exemplar.setDtaAquisicao(new Date());
-//        
-//        EditoraService editoraServ = new EditoraService();
-//        Integer editoraId = Integer.parseInt(dados.get("editoraId"));
-//        exemplar.setEditora(editoraServ.find(editoraId));
-//        
-//        ExemplarTipoService exemplarTipoServ = new ExemplarTipoService();
-//        Integer tipoId = Integer.parseInt(dados.get("tipoId"));
-//        exemplar.setTipo(exemplarTipoServ.find(tipoId));
-        
-        
-        
+        ObraService service = new ObraService();
+        Integer obraId = Integer.parseInt(dados.get("obraId"));
+        exemplar.setObra(service.find(obraId));
 
         return exemplar;
     }
 
-    public void insert(Exemplar exemplar, Obra obra)
+    public void insert(Exemplar exemplar)
     {
-        em.getTransaction().begin();
-        em.persist(exemplar);
-        
-//        Query query = em.createNativeQuery("INSERT INTO exemplarAutor(exemplar, autor) VALUES(?,?)");
-//        query.setParameter(1, exemplar.getId());
-//        query.setParameter(2, autor.getId());
-//        query.executeUpdate();
-//        
-//        Query query2 = em.createNativeQuery("INSERT INTO exemplarAssunto(exemplar, assunto) VALUES(?,?)");
-//        query2.setParameter(1, exemplar.getId());
-//        query2.setParameter(2, assunto.getId());
-//        query2.executeUpdate();
-        
-        em.getTransaction().commit();
-        em.close();
-        
+        super.insert(exemplar);
+
     }
 
     public List<Exemplar> findAll()
