@@ -1,13 +1,9 @@
 package services;
 
-import biblioteca.models.Assunto;
-import biblioteca.models.Autor;
 import biblioteca.models.Exemplar;
-import biblioteca.models.Obra;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import javax.persistence.Query;
 
 /**
  *

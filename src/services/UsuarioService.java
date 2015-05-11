@@ -1,6 +1,7 @@
 package services;
 
 import biblioteca.models.Usuario;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,6 +10,7 @@ import java.util.Map;
  */
 public class UsuarioService extends AbstractService<Usuario>
 {
+
     public Usuario hydrate(Map<String, String> dados)
     {
         Usuario usuario = new Usuario();
@@ -23,6 +25,17 @@ public class UsuarioService extends AbstractService<Usuario>
     public void insert(Usuario usuario)
     {
         super.insert(usuario);
+    }
+
+    public List<Usuario> findAll()
+    {
+        Usuario usuario = new Usuario();
+        return super.findAll(usuario);
+    }
+
+    public Usuario find(Integer id)
+    {
+        return em.find(Usuario.class, id);
     }
 
 }

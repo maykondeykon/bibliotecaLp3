@@ -4,6 +4,7 @@ import biblioteca.models.Assunto;
 import biblioteca.models.Autor;
 import biblioteca.models.Departamento;
 import biblioteca.models.Editora;
+import biblioteca.models.Emprestimo;
 import biblioteca.models.Exemplar;
 import biblioteca.models.Funcionario;
 import biblioteca.models.Obra;
@@ -16,6 +17,7 @@ import services.AssuntoService;
 import services.AutorService;
 import services.DepartamentoService;
 import services.EditoraService;
+import services.EmprestimoService;
 import services.ExemplarService;
 import services.FuncionarioService;
 import services.ObraService;
@@ -121,6 +123,18 @@ public class CadastroController extends AbstractController
                 service.insert(exemplar);
             }
 
+        }
+    }
+
+    public void insertEmprestimo(Map<String, String> dados)
+    {
+        if (isValid(dados)) {
+            EmprestimoService service = new EmprestimoService();
+            Emprestimo emprestimo = service.hydrate(dados);
+            
+            System.out.println("Obra = "+emprestimo.getExemplar().getObra().getNome() + " usuário = " + emprestimo.getUsuario().getNome() + " funcionário = " + emprestimo.getFuncEmprestimo().getNome());
+            
+//            service.insert(emprestimo);
         }
     }
 

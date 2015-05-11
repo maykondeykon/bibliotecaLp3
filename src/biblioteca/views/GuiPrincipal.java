@@ -74,6 +74,10 @@ public class GuiPrincipal extends AbstractGui
         JMenuItem cadExemplar = new JMenuItem("Exemplar");
         cadExemplar.setActionCommand("novoExemplar");
         cadExemplar.addActionListener(this);
+        
+        JMenuItem cadEmprestimo = new JMenuItem("Empréstimo");
+        cadEmprestimo.setActionCommand("novoEmprestimo");
+        cadEmprestimo.addActionListener(this);
 
         menuCadastro.add(cadAutor);
         menuCadastro.add(cadAssunto);
@@ -84,6 +88,7 @@ public class GuiPrincipal extends AbstractGui
         menuCadastro.add(cadObraTipo);
         menuCadastro.add(cadObra);
         menuCadastro.add(cadExemplar);
+        menuCadastro.add(cadEmprestimo);
 
         return barra;
     }
@@ -118,6 +123,9 @@ public class GuiPrincipal extends AbstractGui
                 break;
             case "novoExemplar":
                 guiCadExemplar();
+                break;
+            case "novoEmprestimo":
+                guiCadEmprestimo();
                 break;
         }
     }
@@ -174,6 +182,12 @@ public class GuiPrincipal extends AbstractGui
     {
         GuiExemplar guiExemplar = new GuiExemplar();
         exibeGui(guiExemplar);
+    }
+    
+    private void guiCadEmprestimo()
+    {
+        GuiEmprestimo guiEmprestimo = new GuiEmprestimo();
+        exibeGui(guiEmprestimo);
     }
 
     public static void main(String[] args)
