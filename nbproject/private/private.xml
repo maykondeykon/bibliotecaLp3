@@ -10,6 +10,7 @@
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiUsuario.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiObra.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/controllers/CadastroController.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/models/Exemplar.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/models/Autor.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/teste/Teste.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiDepartamento.java</file>
@@ -19,9 +20,12 @@
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiPrincipal.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/services/AbstractService.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiObraTipo.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/services/ExemplarService.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiExemplar.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/services/ObraService.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/views/GuiFuncionario.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/services/EditoraService.java</file>
+            <file>file:/home/maykon/public_html/bibliotecaLp3/src/services/AssuntoService.java</file>
             <file>file:/home/maykon/public_html/bibliotecaLp3/src/biblioteca/models/Departamento.java</file>
         </group>
     </open-files>

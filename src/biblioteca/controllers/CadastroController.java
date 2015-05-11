@@ -4,6 +4,7 @@ import biblioteca.models.Assunto;
 import biblioteca.models.Autor;
 import biblioteca.models.Departamento;
 import biblioteca.models.Editora;
+import biblioteca.models.Exemplar;
 import biblioteca.models.Funcionario;
 import biblioteca.models.Obra;
 import biblioteca.models.ObraTipo;
@@ -15,6 +16,7 @@ import services.AssuntoService;
 import services.AutorService;
 import services.DepartamentoService;
 import services.EditoraService;
+import services.ExemplarService;
 import services.FuncionarioService;
 import services.ObraService;
 import services.ObraTipoService;
@@ -104,6 +106,15 @@ public class CadastroController extends AbstractController
             Assunto assunto = assuntoServ.find(assuntoId);
 
             service.insert(obra, autor, assunto);
+        }
+    }
+
+    public void insertExemplar(Map<String, String> dados)
+    {
+        if (isValid(dados)) {
+            ExemplarService service = new ExemplarService();
+            Exemplar exemplar = service.hydrate(dados);
+//            service.insert(exemplar);
         }
     }
 
