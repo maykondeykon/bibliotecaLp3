@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -32,6 +33,11 @@ public class GuiPrincipal extends AbstractGui
         setJMenuBar(menuBar());
 
         this.setVisible(true);
+    }
+    
+    public void exibeGui(JInternalFrame gui)
+    {
+        super.exibeGui(gui);
     }
 
     private JMenuBar menuBar()

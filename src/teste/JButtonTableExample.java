@@ -1,79 +1,60 @@
-package biblioteca.views;
+package teste;
 
-import biblioteca.controllers.ConsultaController;
-import biblioteca.models.Emprestimo;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JInternalFrame;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
-/**
- *
- * @author maykon
- */
-public class GuiConsultaEmprestimo extends JInternalFrame
+public class JButtonTableExample
 {
 
-    private JTable tabela;
-    private DefaultTableModel modelo;
-    private JScrollPane tabPainel;
-
-    public GuiConsultaEmprestimo()
+    public JButtonTableExample()
     {
-        super("Empréstimos", true, true, false, true);
-        this.setPreferredSize(new java.awt.Dimension(800, 400));
+        JFrame frame = new JFrame("JButtonTable Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        DefaultTableModel dm = new DefaultTableModel();
+        dm.setDataVector(new Object[][]{{"button 1", "foo"},
+        {"button 2", "bar"}}, new Object[]{"Button", "String"});
+
+        JTable table = new JTable(dm);
+        table.getColumn("Button").setCellRenderer(new ButtonRenderer());
+        table.getColumn("Button").setCellEditor(new ButtonEditor(new JCheckBox()));
+
+        JScrollPane scroll = new JScrollPane(table);
+
+        table.setPreferredScrollableViewportSize(table.getPreferredSize());//thanks mKorbel +1 http://stackoverflow.com/questions/10551995/how-to-set-jscrollpane-layout-to-be-the-same-as-jtable
+
+        table.getColumnModel().getColumn(0).setPreferredWidth(100);//so buttons will fit and not be shown butto..
+
+        frame.add(scroll);
+
+        frame.pack();
+        frame.setVisible(true);
     }
 
-    public JInternalFrame listaEmprestimos(List<Emprestimo> emprestimos)
+    public static void main(String[] args)
     {
-        final JPanel painel = new JPanel();
-        painel.setLayout(new BoxLayout(painel, BoxLayout.PAGE_AXIS));
-        painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        SwingUtilities.invokeLater(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                new JButtonTableExample();
+            }
+        });
 
-        modelo = new DefaultTableModel(null, new String[]{"Exemplar", "Data empréstimo", "Usuário", "Funcionário", "Devolver"});
-        tabela = new JTable(modelo);
-        tabela.setAutoCreateRowSorter(true);
-        
-        for (Emprestimo emprestimo : emprestimos) {
-            Object dados[] = new Object[5];
-//            dados[0] = emprestimo.getId().toString();
-            dados[0] = emprestimo.getExemplar().getObra().getNome() + " - " + emprestimo.getExemplar().getId();
-            dados[1] = emprestimo.getDtaEmprestimo().toString();
-            dados[2] = emprestimo.getUsuario().getNome();
-            dados[3] = emprestimo.getFuncEmprestimo().getNome();
-            dados[4] = emprestimo.getId().toString();
-
-            modelo.addRow(dados);
-        }
-        
-        tabela.getColumn("Devolver").setCellRenderer(new ButtonRenderer());
-        tabela.getColumn("Devolver").setCellEditor(new ButtonEditor(new JCheckBox()));
-        
-        tabPainel = new JScrollPane(tabela);
-        painel.add(tabPainel);
-
-        setContentPane(painel);
-        pack();
-        
-        return this;
     }
-
 }
 
 class ButtonRenderer extends JButton implements TableCellRenderer
@@ -143,10 +124,7 @@ class ButtonEditor extends DefaultCellEditor
     public Object getCellEditorValue()
     {
         if (isPushed) {
-//            JOptionPane.showMessageDialog(button, label + ": Ouch!");
-            ConsultaController controller = new ConsultaController();
-            int idEmprestimo = Integer.parseInt(label);
-            controller.devolveEmprestimo(idEmprestimo);
+            JOptionPane.showMessageDialog(button, label + ": Ouch!");
         }
         isPushed = false;
         return label;
