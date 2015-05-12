@@ -1,13 +1,16 @@
 package biblioteca.views;
 
+import biblioteca.models.Emprestimo;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
+import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import services.EmprestimoService;
 
 /**
  *
@@ -78,7 +81,7 @@ public class GuiPrincipal extends AbstractGui
         JMenuItem cadEmprestimo = new JMenuItem("Empréstimo");
         cadEmprestimo.setActionCommand("novoEmprestimo");
         cadEmprestimo.addActionListener(this);
-
+        
         menuCadastro.add(cadAutor);
         menuCadastro.add(cadAssunto);
         menuCadastro.add(cadDepartamento);
@@ -89,6 +92,14 @@ public class GuiPrincipal extends AbstractGui
         menuCadastro.add(cadObra);
         menuCadastro.add(cadExemplar);
         menuCadastro.add(cadEmprestimo);
+        
+//        ---Consultas---
+        
+        JMenuItem consEmprestimo = new JMenuItem("Empréstimos");
+        consEmprestimo.setActionCommand("consEmprestimo");
+        consEmprestimo.addActionListener(this);
+        
+        menuConsulta.add(consEmprestimo);
 
         return barra;
     }
@@ -126,6 +137,9 @@ public class GuiPrincipal extends AbstractGui
                 break;
             case "novoEmprestimo":
                 guiCadEmprestimo();
+                break;
+            case "consEmprestimo":
+                guiConsEmprestimo();
                 break;
         }
     }
@@ -188,6 +202,18 @@ public class GuiPrincipal extends AbstractGui
     {
         GuiEmprestimo guiEmprestimo = new GuiEmprestimo();
         exibeGui(guiEmprestimo);
+    }
+    
+    //        ---Consultas---
+    
+    private void guiConsEmprestimo()
+    {
+        GuiConsultaEmprestimo guiEmprestimo = new GuiConsultaEmprestimo();
+        
+        EmprestimoService emprestServ = new EmprestimoService();
+        List <Emprestimo> emprestimos = emprestServ.findAll();
+        
+        exibeGui(guiEmprestimo.listaEmprestimos(emprestimos));
     }
 
     public static void main(String[] args)
