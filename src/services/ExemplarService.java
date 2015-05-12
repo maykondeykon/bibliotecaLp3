@@ -35,6 +35,12 @@ public class ExemplarService extends AbstractService<Exemplar>
         return super.findAll(exemplar);
     }
 
+    public List<Exemplar> findDisponiveis()
+    {
+        String sql = "SELECT e FROM Exemplar e WHERE e.emprestado = 0";
+        return em.createQuery(sql).getResultList();
+    }
+
     public Exemplar find(Integer id)
     {
         return em.find(Exemplar.class, id);

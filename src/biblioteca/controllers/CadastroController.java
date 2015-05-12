@@ -131,10 +131,7 @@ public class CadastroController extends AbstractController
         if (isValid(dados)) {
             EmprestimoService service = new EmprestimoService();
             Emprestimo emprestimo = service.hydrate(dados);
-            
-            System.out.println("Obra = "+emprestimo.getExemplar().getObra().getNome() + " usuário = " + emprestimo.getUsuario().getNome() + " funcionário = " + emprestimo.getFuncEmprestimo().getNome());
-            
-//            service.insert(emprestimo);
+            service.insert(emprestimo);
         }
     }
 

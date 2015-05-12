@@ -1,6 +1,7 @@
 package services;
 
 import biblioteca.models.Emprestimo;
+import biblioteca.models.Exemplar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -19,12 +20,12 @@ public class EmprestimoService extends AbstractService<Emprestimo>
         
         ExemplarService ExemplarServ = new ExemplarService();
         Integer exemplarId = Integer.parseInt(dados.get("exemplarId"));
-//        emprestimo.setExemplar(service.find(exemplarId));
+        emprestimo.setExemplar(ExemplarServ.find(exemplarId));
         
         UsuarioService UsuarioServ = new UsuarioService();
         Integer usuarioId = Integer.parseInt(dados.get("usuarioId"));
         emprestimo.setUsuario(UsuarioServ.find(usuarioId));
-//        
+        
         FuncionarioService funcServ = new FuncionarioService();
         Integer funcId = 1;//Setado para o 1º
         emprestimo.setFuncEmprestimo(funcServ.find(funcId));
@@ -34,7 +35,14 @@ public class EmprestimoService extends AbstractService<Emprestimo>
 
     public void insert(Emprestimo emprestimo)
     {
-        super.insert(emprestimo);
+        Exemplar exemplar = emprestimo.getExemplar();
+        exemplar.setEmprestado(1);//seta como emprestado
+        
+        em.getTransaction().begin();
+        em.persist(emprestimo);
+        em.merge(exemplar);
+        em.getTransaction().commit();
+        em.close();
 
     }
 

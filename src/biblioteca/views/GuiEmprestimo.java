@@ -71,7 +71,7 @@ public class GuiEmprestimo extends JInternalFrame
         salvar = new JButton("Salvar");
         
         ExemplarService exemplarServ = new ExemplarService();
-        exemplares = exemplarServ.findAll();
+        exemplares = exemplarServ.findDisponiveis();
 
         exemplar.addItem("Selecione");
         for (Exemplar exemplarClass : exemplares) {
@@ -106,7 +106,7 @@ public class GuiEmprestimo extends JInternalFrame
             @Override
             public void itemStateChanged(ItemEvent e)
             {
-                exemplarId.setText(exemplar.getSelectedIndex() + "");
+                exemplarId.setText(exemplares.get(exemplar.getSelectedIndex() -1).getId().toString());//copiar para outras gui's
             }
         });
         
@@ -128,10 +128,12 @@ public class GuiEmprestimo extends JInternalFrame
             {
                 controller.insertEmprestimo(controller.getHashMap(painel));
 //                dtaEmprestimo.setText(null);
+                exemplar.removeItem(exemplar.getSelectedItem());
                 exemplar.setSelectedIndex(0);
                 exemplarId.setText(null);
                 usuario.setSelectedIndex(0);
                 usuarioId.setText(null);
+//                exemplar.updateUI();
             }
         });
 

@@ -47,9 +47,15 @@ public class Exemplar implements Serializable
     private Obra obra;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "exemplar")
     private List<Reserva> reservaList;
+    @Column(name = "emprestado")
+    private Integer emprestado;
+    @Column(name = "reservado")
+    private Integer reservado;
 
     public Exemplar()
     {
+        this.emprestado = 0;
+        this.reservado = 0;
     }
 
     public Exemplar(Integer id)
@@ -112,6 +118,27 @@ public class Exemplar implements Serializable
     {
         this.reservaList = reservaList;
     }
+
+    public Integer getEmprestado()
+    {
+        return emprestado;
+    }
+
+    public void setEmprestado(Integer emprestado)
+    {
+        this.emprestado = emprestado;
+    }
+
+    public Integer getReservado()
+    {
+        return reservado;
+    }
+
+    public void setReservado(Integer reservado)
+    {
+        this.reservado = reservado;
+    }
+    
 
     @Override
     public int hashCode()
