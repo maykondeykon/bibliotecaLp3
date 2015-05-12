@@ -39,6 +39,7 @@ public class GuiEmprestimo extends JInternalFrame
     private final JButton salvar;
     private final List<Exemplar> exemplares;
     private final List<Usuario> usuarios;
+    private final String exemplarArray[][];
 
     public GuiEmprestimo()
     {
@@ -72,10 +73,22 @@ public class GuiEmprestimo extends JInternalFrame
         
         ExemplarService exemplarServ = new ExemplarService();
         exemplares = exemplarServ.findDisponiveis();
-
-        exemplar.addItem("Selecione");
-        for (Exemplar exemplarClass : exemplares) {
-            exemplar.addItem(exemplarClass.getObra().getNome() + " - exemplar "+ exemplarClass.getId());
+        
+        exemplarArray = new String[exemplares.size()+1][2];
+        exemplarArray[0][0] = "0";
+        exemplarArray[0][1] = "Selecione";
+        for(int i = 1; i <= exemplares.size();i++){
+            exemplarArray[i][0] = exemplares.get(i-1).getId().toString();
+            exemplarArray[i][1] = exemplares.get(i-1).getObra().getNome();
+        }
+        
+        for(int i = 0; i < exemplarArray.length;i++){
+            System.out.println(exemplarArray[i][0]+" - "+exemplarArray[i][1]);
+            if(i > 0){
+            exemplar.addItem(exemplarArray[i][1] + " - exemplar "+ exemplarArray[i][0]);
+            }else{
+                exemplar.addItem(exemplarArray[i][1]);
+            }
         }
         
         UsuarioService usuarioServ = new UsuarioService();
@@ -106,7 +119,7 @@ public class GuiEmprestimo extends JInternalFrame
             @Override
             public void itemStateChanged(ItemEvent e)
             {
-                exemplarId.setText(exemplares.get(exemplar.getSelectedIndex() -1).getId().toString());//copiar para outras gui's
+                exemplarId.setText(exemplarArray[exemplar.getSelectedIndex()][0]);//copiar para outras gui's
             }
         });
         
@@ -133,7 +146,6 @@ public class GuiEmprestimo extends JInternalFrame
                 exemplarId.setText(null);
                 usuario.setSelectedIndex(0);
                 usuarioId.setText(null);
-//                exemplar.updateUI();
             }
         });
 
