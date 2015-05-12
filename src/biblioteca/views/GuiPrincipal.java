@@ -217,7 +217,7 @@ public class GuiPrincipal extends AbstractGui
         GuiConsultaEmprestimo guiEmprestimo = new GuiConsultaEmprestimo();
         
         EmprestimoService emprestServ = new EmprestimoService();
-        List <Emprestimo> emprestimos = emprestServ.findAll();
+        List <Emprestimo> emprestimos = emprestServ.findEmprestados();
         
         exibeGui(guiEmprestimo.listaEmprestimos(emprestimos));
     }

@@ -40,14 +40,19 @@ public class Emprestimo implements Serializable
     @Column(name = "dtaDevolucao")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtaDevolucao;
-    @Column(name = "funcDevolucao")
-    private Integer funcDevolucao;
+    
+    @JoinColumn(name = "funcDevolucao", referencedColumnName = "id")
+    @ManyToOne(optional = true)
+    private Funcionario funcDevolucao;
+    
     @JoinColumn(name = "usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuario usuario;
+    
     @JoinColumn(name = "funcEmprestimo", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Funcionario funcEmprestimo;
+    
     @JoinColumn(name = "exemplar", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Exemplar exemplar;
@@ -97,12 +102,12 @@ public class Emprestimo implements Serializable
         this.dtaDevolucao = dtaDevolucao;
     }
 
-    public Integer getFuncDevolucao()
+    public Funcionario getFuncDevolucao()
     {
         return funcDevolucao;
     }
 
-    public void setFuncDevolucao(Integer funcDevolucao)
+    public void setFuncDevolucao(Funcionario funcDevolucao)
     {
         this.funcDevolucao = funcDevolucao;
     }
